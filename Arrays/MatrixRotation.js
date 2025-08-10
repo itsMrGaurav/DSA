@@ -39,8 +39,6 @@ var rotate = function (matrix) {
       return;
     }
 
-    console.log(r, c, n);
-
     for (let i = 0; i < n - 1; i++) {
       // swap rth row and (c+n)th col
       swap(r, c + i, r + i, c + n - 1);
@@ -55,16 +53,5 @@ var rotate = function (matrix) {
 
   for (let i = 0; i < Math.floor(matrix.length / 2); i++) {
     rotation(i, i, matrix.length - 2 * i);
-    console.log(matrix);
   }
 };
-
-const matrix = [
-  [1, 2, 3, 4, 5],
-  [6, 7, 8, 9, 10],
-  [11, 12, 13, 14, 15],
-  [16, 17, 18, 19, 20],
-  [21, 22, 23, 24, 25],
-];
-rotate(matrix);
-console.log(matrix);
