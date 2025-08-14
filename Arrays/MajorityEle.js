@@ -48,7 +48,7 @@ var majorityElement = function (nums) {
  * @param {number[]} nums
  * @return {number}
  */
-var majorityElement2 = function (nums) {
+var majorityElementMA = function (nums) {
   let count = 1,
     maj = nums[0];
 
@@ -65,4 +65,38 @@ var majorityElement2 = function (nums) {
     }
   }
   return maj;
+};
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var majorityElement2 = function (nums) {
+  const len = nums.length;
+
+  if (len === 1) {
+    return nums;
+  }
+
+  const map = new Map();
+  const ret = [];
+  let lastC;
+  for (let i = 0; i < len; i++) {
+    lastC = map.get(nums[i]);
+    if (lastC === undefined) {
+      lastC = 1;
+      map.set(nums[i], lastC);
+    } else {
+      lastC += 1;
+      map.set(nums[i], lastC);
+    }
+    if (lastC > len / 3 && !ret.includes(nums[i])) {
+      ret.push(nums[i]);
+
+      if (ret.length > 1) {
+        return ret;
+      }
+    }
+  }
+  return ret;
 };
