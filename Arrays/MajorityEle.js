@@ -41,3 +41,28 @@ var majorityElement = function (nums) {
   }
   return maxV;
 };
+
+//moore's algo solution
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var majorityElement2 = function (nums) {
+  let count = 1,
+    maj = nums[0];
+
+  for (let i = 1; i < nums.length; i++) {
+    if (maj === nums[i]) count += 1;
+    else if (!maj) {
+      count += 1;
+      maj = nums[i];
+    } else {
+      count -= 1;
+      if (count === 0) {
+        maj = null;
+      }
+    }
+  }
+  return maj;
+};
